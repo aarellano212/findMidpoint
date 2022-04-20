@@ -2,29 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Find Midpoint?</title>
+    <title>Rectangle Area</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <div class="content">
-        <h3>Where's The Midpoint?</h3>
+        <h3>What's the area of Rectangle?</h3>
         <div class="row">
             <div>
-                <label for="a">A</label>
+                <label for="a">Side A</label>
                 <input type="text" id="a" name="a" style="width: 100px;">
             </div>
             <div>
-                <label for="b">B</label>
+                <label for="b">Side B</label>
                 <input type="text" id="b" name="b" style="width: 100px;">
             </div>
             <div>
-                <label for="c">C</label>
+                <label for="b">Area</label>
                 <input type="text" id="c" name="c" style="width: 100px;">
-            </div>
-            <div>
-                <label for="d">D</label>
-                <input type="text" id="d" name="d" style="width: 100px;">
             </div>
         </div>
         <button id="calc">Calculate</button>
@@ -36,36 +32,34 @@
     const a = document.getElementById('a');
     const b = document.getElementById('b');
     const c = document.getElementById('c');
-    const d = document.getElementById('d');
     const ans = document.querySelector('p');
     const calculateButton = document.getElementById('calc');
     const clearButton = document.getElementById('clear');
 
-    function checkForMidpoint(num1, num2, num3, num4) {
-        let findX = (num1 + num3)/2;
-        let findY = (num2 + num4)/2;
+    function checkArea(num1, num2, num3) {
+        let areaAnswer = num3;
+        let rectArea = num1 * num2;
 
-        if (findX && findY) {
+        if (areaAnswer == rectArea) {
             return true;
         }
         return false;
     }
 
     calculateButton.addEventListener('click', function(e) {
-        let pointAX = +a.value;
-        let pointAY = +b.value;
-        let pointBX = +c.value;
-        let pointBY = +d.value;
+        let sideA = +a.value;
+        let sideB = +b.value;
+        let area = +c.value;
 
-        if (!checkIsValid(pointAX) || !checkIsValid(pointAY) || !checkIsValid(pointBX) || !checkIsValid(pointBY)){
+        if (!checkIsValid(sideA) || !checkIsValid(sideB) || !checkIsValid(area)){
             ans.textContent = 'Invalid Inputs';
             return;
         }
-        if (checkForMidpoint(pointAX, pointAY, pointBX, pointBY)){
-            ans.textContent = 'Yes, this makes a valid triangle'
+        if (checkArea(sideA, sideB, area)){
+            ans.textContent = 'Yes, this is the area of th rectangles'
             return;
         }
-        ans.textContent = 'Inputs do NOT create a valid triangle'
+        ans.textContent = 'Inputs do NOT match the inputted area'
     })
 
     function checkIsValid(num) {
@@ -82,7 +76,6 @@
         a.value = " ";
         b.value = " ";
         c.value = " ";
-        d.value = " ";
         ans.textContent = " ";
     })
 </script>
